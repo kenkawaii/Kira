@@ -27,17 +27,31 @@
 <!-- Navigation -->
 <nav class="bg-surface border-b border-border fixed top-0 w-full z-50">
     <div class="max-w-[1200px] mx-auto px-lg flex justify-between items-center h-16">
-        <div class="flex items-center gap-md">
-            <a class="font-h4 text-h4 font-bold text-primary tracking-tight" href="index.html">Kira</a>
+        <a class="font-bold text-[18px] text-primary tracking-tight" href="index.html">Kira</a>
+        <div class="hidden md:flex items-center gap-6">
+            <a class="text-[16px] text-[#44403C] hover:text-[#b45309] transition-colors duration-200" href="how-it-works.html">How It Works</a>
+            <a class="text-[16px] text-[#44403C] hover:text-[#b45309] transition-colors duration-200" href="features.html">Features</a>
+            <a class="text-[16px] text-[#44403C] hover:text-[#b45309] transition-colors duration-200" href="why.html">Why Kira</a>
+            <a class="text-[16px] text-[#44403C] hover:text-[#b45309] transition-colors duration-200" href="faq.html">FAQ</a>
         </div>
-        <div class="hidden md:flex items-center gap-lg">
-            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="how-it-works.html">How It Works</a>
-            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="features.html">Features</a>
-            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="faq.html">FAQ</a>
+        <div class="hidden md:flex items-center gap-3">
+            <a class="text-[16px] text-[#44403C] px-4 py-3 rounded-lg hover:text-[#b45309] transition-colors duration-200" href="#">Sign In</a>
+            <a class="bg-[#B45309] text-white text-[16px] px-4 py-3 rounded-lg hover:bg-[#903f00] transition-colors duration-200" href="waitlist.html">Join Waitlist</a>
         </div>
-        <div class="hidden md:flex items-center gap-sm">
-            <a class="font-body text-body text-text-body px-md py-sm rounded-lg hover:text-primary-container transition-colors duration-200" href="#">Sign In</a>
-            <a class="bg-amber-700 text-white font-body text-body px-md py-sm rounded-lg hover:bg-primary transition-colors duration-200" href="waitlist.html">Join Waitlist</a>
+        <button class="md:hidden p-2 text-[#44403C] hover:text-[#903f00]" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-white border-t border-[#E7E5E4]">
+        <div class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
+            <a class="text-[16px] text-[#44403C] py-3 hover:text-[#b45309] transition-colors" href="how-it-works.html">How It Works</a>
+            <a class="text-[16px] text-[#44403C] py-3 hover:text-[#b45309] transition-colors" href="features.html">Features</a>
+            <a class="text-[16px] text-[#44403C] py-3 hover:text-[#b45309] transition-colors" href="why.html">Why Kira</a>
+            <a class="text-[16px] text-[#44403C] py-3 hover:text-[#b45309] transition-colors" href="faq.html">FAQ</a>
+            <div class="border-t border-[#E7E5E4] pt-3 mt-1 flex flex-col gap-3">
+                <a class="text-[16px] text-[#44403C] py-3" href="#">Sign In</a>
+                <a class="bg-[#B45309] text-white text-[16px] px-4 py-3 rounded-lg text-center" href="waitlist.html">Join Waitlist</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -99,9 +113,9 @@
             </div>
             <div class="flex flex-col gap-sm">
                 <span class="font-h4 text-h4 text-bg-stone mb-sm">Company</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="why.html">Why Kira</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="comparison.html">Comparison</a>
                 <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="contact.html">Contact</a>
-                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">About</a>
-                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Blog</a>
             </div>
             <div class="flex flex-col gap-sm">
                 <span class="font-h4 text-h4 text-bg-stone mb-sm">Legal</span>

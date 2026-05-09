@@ -57,19 +57,33 @@
 </head>
 <body class="bg-bg-stone min-h-screen text-text-body font-body antialiased">
 <!-- Navigation -->
-<nav class="bg-surface dark:bg-surface fixed top-0 w-full z-50 border-b border-border dark:border-outline-variant">
+<nav class="bg-surface border-b border-border fixed top-0 w-full z-50">
     <div class="max-w-[1200px] mx-auto px-lg flex justify-between items-center h-16">
-        <div class="text-h4 font-h4 font-bold text-primary dark:text-inverse-primary tracking-tight">
-            <a href="index.html">Kira</a>
+        <a class="font-h4 text-h4 font-bold text-primary tracking-tight" href="index.html">Kira</a>
+        <div class="hidden md:flex items-center gap-lg">
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="how-it-works.html">How It Works</a>
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="features.html">Features</a>
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="why.html">Why Kira</a>
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="faq.html">FAQ</a>
         </div>
-        <div class="hidden md:flex items-center gap-xl font-body text-body">
-            <a class="text-text-body dark:text-on-surface-variant hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors duration-200" href="how-it-works.html">How It Works</a>
-            <a class="text-text-body dark:text-on-surface-variant hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors duration-200" href="features.html">Features</a>
-            <a class="text-text-body dark:text-on-surface-variant hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors duration-200" href="faq.html">FAQ</a>
+        <div class="hidden md:flex items-center gap-sm">
+            <a class="font-body text-body text-text-body px-md py-sm rounded-lg hover:text-primary-container transition-colors duration-200" href="#">Sign In</a>
+            <a class="bg-amber-700 text-on-primary font-body text-body px-md py-sm rounded-lg hover:bg-primary-container transition-colors duration-200" href="waitlist.html">Join Waitlist</a>
         </div>
-        <div class="flex items-center gap-md">
-            <button class="hidden md:block font-body text-body text-text-body dark:text-on-surface-variant hover:text-primary-container transition-colors duration-200 active:opacity-80">Sign In</button>
-            <a href="waitlist.html" class="bg-amber-700 text-on-primary font-body text-body px-md py-sm rounded-lg hover:bg-amber-600 transition-colors duration-200 active:opacity-80">Get Started</a>
+        <button class="md:hidden p-xs text-text-body hover:text-primary" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-surface border-t border-border">
+        <div class="max-w-[1200px] mx-auto px-lg py-md flex flex-col gap-xs">
+            <a class="font-body text-body text-text-body py-sm hover:text-primary-container transition-colors" href="how-it-works.html">How It Works</a>
+            <a class="font-body text-body text-text-body py-sm hover:text-primary-container transition-colors" href="features.html">Features</a>
+            <a class="font-body text-body text-text-body py-sm hover:text-primary-container transition-colors" href="why.html">Why Kira</a>
+            <a class="font-body text-body text-text-body py-sm hover:text-primary-container transition-colors" href="faq.html">FAQ</a>
+            <div class="border-t border-border pt-sm mt-xs flex flex-col gap-sm">
+                <a class="font-body text-body text-text-body py-sm" href="#">Sign In</a>
+                <a class="bg-amber-700 text-on-primary font-body text-body px-md py-sm rounded-lg text-center" href="waitlist.html">Join Waitlist</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -145,19 +159,49 @@
     </section>
 </main>
 
+<!-- CTA Section -->
+<section class="w-full bg-gradient-to-b from-amber-50 to-surface py-[128px]">
+    <div class="max-w-[800px] mx-auto px-lg text-center flex flex-col items-center">
+        <h2 class="font-h2-mobile text-h2-mobile md:font-h2-desktop md:text-h2-desktop text-text-strong font-bold mb-md">Ready to kira your business one week ahead?</h2>
+        <p class="font-body-lg text-body-lg text-text-muted max-w-[600px] mx-auto mb-xl">We're onboarding 20 F&amp;B businesses for free during our private beta. Spots are limited — we want to get Kira right before we scale.</p>
+        <a href="waitlist.html" class="bg-amber-700 text-on-primary font-h4 text-h4 py-md px-xl rounded-lg hover:-translate-y-[2px] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-all duration-200">Join the Waitlist</a>
+        <p class="font-caption text-caption text-text-muted mt-sm">No credit card. No commitment. Email + business name only.</p>
+    </div>
+</section>
+
 <!-- Footer -->
-<footer class="bg-surface dark:bg-surface-dim w-full py-xl border-t border-border dark:border-outline-variant">
-    <div class="max-w-[1200px] mx-auto px-lg flex flex-col md:flex-row justify-between items-center gap-md">
-        <div class="text-center md:text-left">
-            <div class="text-h4 font-h4 font-bold text-primary dark:text-inverse-primary mb-2">Kira</div>
-            <p class="font-caption text-caption text-text-muted dark:text-on-surface-variant">© 2026 Kira Analytics. Built for Malaysian F&B SMEs.</p>
+<footer class="w-full bg-text-strong text-bg-stone py-3xl">
+    <div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row justify-between items-start gap-md">
+        <div class="flex flex-col mb-xl md:mb-0 md:w-1/4">
+            <span class="text-h4 font-h4 font-bold text-bg-stone mb-base">Kira</span>
+            <p class="font-caption text-caption opacity-70 mb-base">Predict. Explain. Act.</p>
+            <p class="font-caption text-caption opacity-70">Built in Sabah, Malaysia.</p>
         </div>
-        <div class="flex flex-wrap justify-center gap-lg font-caption text-caption">
-            <a class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Privacy Policy</a>
-            <a class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Terms of Service</a>
-            <a class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Contact</a>
-            <a class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">API Docs</a>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-xl md:w-3/4">
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Product</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="how-it-works.html">How It Works</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="features.html">Features</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="faq.html">FAQ</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="waitlist.html">Waitlist</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Company</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="why.html">Why Kira</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="comparison.html">Comparison</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="contact.html">Contact</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Legal</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Privacy Policy</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Terms of Service</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">PDPA Notice</a>
+            </div>
         </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-lg mt-xl pt-lg border-t border-text-muted/30 flex flex-col md:flex-row justify-between items-center gap-md">
+        <span class="font-caption text-caption opacity-70">© 2026 Kira. All rights reserved.</span>
+        <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="mailto:tekkenooi184@gmail.com">tekkenooi184@gmail.com</a>
     </div>
 </footer>
 </body>
