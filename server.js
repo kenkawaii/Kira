@@ -3,7 +3,6 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const { Resend } = require('resend');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 
@@ -70,9 +69,6 @@ db.serialize(() => {
   });
 });
 
-// Email configuration
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Routes
 
 // API: Submit to waitlist
@@ -102,22 +98,6 @@ app.post('/api/waitlist', (req, res) => {
         return res.status(500).json({ error: 'Database error' });
       }
 
-      // Send confirmation email
-      resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: email,
-        subject: 'Welcome to Kira Waitlist!',
-        html: `
-          <h2>You're on the list! 🎉</h2>
-          <p>Hi ${businessName},</p>
-          <p>Thanks for joining the Kira waitlist. We'll be in touch soon with more updates about our private beta launch.</p>
-          <p><strong>Business Type:</strong> ${businessType}</p>
-          ${interview ? '<p><strong>You\'ve opted in for a 20-minute interview - we\'ll reach out soon!</strong></p>' : ''}
-          <p>In the meantime, feel free to reply to this email if you have any questions.</p>
-          <p>Best regards,<br>The Kira Team</p>
-        `
-      }).catch(error => console.log('Email error:', error));
-
       res.json({
         success: true,
         message: 'Successfully added to waitlist',
@@ -142,19 +122,6 @@ app.post('/api/contact', (req, res) => {
       if (err) {
         return res.status(500).json({ error: 'Failed to submit contact form' });
       }
-
-      // Send notification email to admin
-      resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: process.env.EMAIL_USER,
-        subject: `New Contact: ${subject}`,
-        html: `
-          <p><strong>From:</strong> ${name} (${email})</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        `
-      }).catch(error => console.log('Email error:', error));
 
       res.json({ success: true, message: 'Thank you for your message' });
     }
