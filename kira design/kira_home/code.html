@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kira - Forecast Your Business</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom subtle warm gradient background based on theme colors */
+        .bg-gradient-warm {
+            background: linear-gradient(135deg, #FAFAF9 0%, #FFFBEB 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-error-container": "#93000a",
+                            "on-secondary-fixed-variant": "#4b4641",
+                            "on-primary-container": "#fff1eb",
+                            "bg-stone": "#FAFAF9",
+                            "on-secondary": "#ffffff",
+                            "text-strong": "#1C1917",
+                            "primary": "#903f00",
+                            "on-surface-variant": "#564338",
+                            "on-tertiary-fixed-variant": "#00497e",
+                            "tertiary": "#005998",
+                            "background": "#fff8f6",
+                            "surface-container-high": "#f8e4db",
+                            "surface-variant": "#f2dfd6",
+                            "on-primary-fixed": "#331200",
+                            "tertiary-container": "#0072c0",
+                            "on-background": "#231914",
+                            "amber-600": "#D97706",
+                            "primary-fixed": "#ffdbca",
+                            "error": "#ba1a1a",
+                            "on-primary": "#ffffff",
+                            "amber-50": "#FFFBEB",
+                            "on-secondary-container": "#6a635e",
+                            "secondary-fixed-dim": "#cec5bf",
+                            "on-surface": "#231914",
+                            "error-container": "#ffdad6",
+                            "surface-container": "#feeae1",
+                            "critical": "#9F3A38",
+                            "surface-bright": "#fff8f6",
+                            "secondary": "#645d58",
+                            "surface-tint": "#9b4500",
+                            "text-body": "#44403C",
+                            "on-tertiary-container": "#eef3ff",
+                            "on-error": "#ffffff",
+                            "surface-container-low": "#fff1eb",
+                            "inverse-on-surface": "#ffede5",
+                            "inverse-primary": "#ffb68e",
+                            "secondary-fixed": "#eae1da",
+                            "amber-700": "#B45309",
+                            "warning": "#A16207",
+                            "surface-dim": "#ead6cd",
+                            "outline": "#897267",
+                            "tertiary-fixed-dim": "#9fcaff",
+                            "inverse-surface": "#3a2e28",
+                            "border": "#E7E5E4",
+                            "surface-container-highest": "#f2dfd6",
+                            "tertiary-fixed": "#d2e4ff",
+                            "secondary-container": "#eae1da",
+                            "primary-fixed-dim": "#ffb68e",
+                            "on-tertiary": "#ffffff",
+                            "surface": "#FFFFFF",
+                            "primary-container": "#b45309",
+                            "outline-variant": "#ddc1b3",
+                            "on-tertiary-fixed": "#001d36",
+                            "surface-container-lowest": "#ffffff",
+                            "success": "#4D7C5F",
+                            "text-muted": "#78716C",
+                            "on-primary-fixed-variant": "#763300",
+                            "on-secondary-fixed": "#1f1b17"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "3xl": "64px",
+                            "xs": "8px",
+                            "xl": "32px",
+                            "lg": "24px",
+                            "section-v-pad-mobile": "64px",
+                            "4xl": "96px",
+                            "2xl": "48px",
+                            "container-max": "1200px",
+                            "md": "16px",
+                            "base": "4px",
+                            "sm": "12px",
+                            "section-v-pad-desktop": "96px"
+                    },
+                    "fontFamily": {
+                            "h1-mobile": ["Geist"],
+                            "caption": ["Geist"],
+                            "mono-label": ["JetBrains Mono"],
+                            "h4": ["Geist"],
+                            "h2-mobile": ["Geist"],
+                            "h2-desktop": ["Geist"],
+                            "h3-desktop": ["Geist"],
+                            "h1-desktop": ["Geist"],
+                            "h3-mobile": ["Geist"],
+                            "body-sm": ["Geist"],
+                            "body-lg": ["Geist"],
+                            "body": ["Geist"]
+                    },
+                    "fontSize": {
+                            "h1-mobile": ["36px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                            "caption": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                            "mono-label": ["14px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                            "h4": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                            "h2-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                            "h2-desktop": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                            "h3-desktop": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                            "h1-desktop": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                            "h3-mobile": ["20px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                            "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                            "body": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-stone font-body text-body text-text-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar JSON Rendering -->
+<nav class="bg-surface border-b border-border fixed top-0 w-full z-50">
+<div class="max-w-[1200px] mx-auto px-lg flex justify-between items-center h-16">
+<!-- Brand -->
+<div class="flex items-center gap-md">
+<a class="font-h4 text-h4 font-bold text-primary tracking-tight" href="#">Kira</a>
+</div>
+<!-- Desktop Navigation Links -->
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="#">How It Works</a>
+<a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="#">Features</a>
+<a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="#">FAQ</a>
+</div>
+<!-- Actions -->
+<div class="hidden md:flex items-center gap-sm">
+<a class="font-body text-body text-text-body px-md py-sm rounded-lg hover:text-primary-container transition-colors duration-200" href="#">Sign In</a>
+<a class="bg-amber-700 text-on-primary font-body text-body px-md py-sm rounded-lg hover:bg-primary-container transition-colors duration-200" href="#">Join Waitlist</a>
+</div>
+<!-- Mobile Menu Toggle (Decorative) -->
+<button class="md:hidden p-xs text-text-body hover:text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Canvas Content -->
+<main class="flex-grow pt-[64px] bg-gradient-warm flex items-center min-h-[720px]">
+<div class="max-w-[1200px] mx-auto px-lg w-full py-section-v-pad-mobile md:py-section-v-pad-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl md:gap-3xl items-center">
+<!-- Left Column (60% equivalent approx) -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Eyebrow -->
+<p class="font-mono-label text-mono-label text-amber-700 uppercase tracking-widest">
+                        FOR MALAYSIAN F&amp;B SMES
+                    </p>
+<!-- H1 -->
+<h1 class="font-h1-mobile text-h1-mobile md:font-h1-desktop md:text-h1-desktop text-text-strong">
+                        Kira your business one week ahead.
+                    </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-text-muted max-w-[540px] mt-md">
+                        Kira turns your daily transactions into demand forecasts, customer churn alerts, and anomaly detection — with plain-language explanations any owner can act on.
+                    </p>
+<!-- Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-md mt-xl">
+<button class="w-full sm:w-auto bg-amber-700 text-on-primary font-body text-body px-xl py-md rounded-lg active:scale-95 transition-transform">
+                            Join the Waitlist
+                        </button>
+<button class="w-full sm:w-auto border border-text-strong text-text-strong font-body text-body px-xl py-md rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-sm">
+                            How It Works
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Caption -->
+<p class="font-caption text-caption text-text-muted mt-xs">
+                        Free for 6 months for our first 20 beta customers.
+                    </p>
+</div>
+<!-- Right Column (40% equivalent approx) - UI Mock -->
+<div class="lg:col-span-5 relative group mt-xl lg:mt-0">
+<!-- Subtle Hover Lift & Shadow Container -->
+<div class="bg-surface border border-border rounded-xl p-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 w-full flex flex-col gap-lg">
+<!-- Chart Header -->
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-h4 text-h4 text-text-strong">Revenue Forecast</h3>
+<p class="font-caption text-caption text-text-muted mt-base">Next 7 Days</p>
+</div>
+<div class="bg-surface-container-low px-sm py-xs rounded text-primary font-mono-label text-mono-label flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                                +14% Expected
+                            </div>
+</div>
+<!-- Abstract Chart Visualization (HTML/CSS constructed) -->
+<div class="h-48 relative w-full border-b border-l border-border mt-md">
+<!-- Y Axis Labels -->
+<div class="absolute -left-10 bottom-0 top-0 flex flex-col justify-between text-right w-8">
+<span class="font-mono-label text-[10px] text-text-muted">4k</span>
+<span class="font-mono-label text-[10px] text-text-muted">2k</span>
+<span class="font-mono-label text-[10px] text-text-muted">0</span>
+</div>
+<!-- X Axis Labels -->
+<div class="absolute -bottom-6 left-0 right-0 flex justify-between px-2">
+<span class="font-mono-label text-[10px] text-text-muted">Mon</span>
+<span class="font-mono-label text-[10px] text-text-muted">Wed</span>
+<span class="font-mono-label text-[10px] text-amber-700 font-bold">Fri</span>
+<span class="font-mono-label text-[10px] text-text-muted">Sun</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="w-full border-t border-border border-dashed h-0 opacity-50"></div>
+<div class="w-full border-t border-border border-dashed h-0 opacity-50"></div>
+<div class="w-full h-0"></div>
+</div>
+<!-- Actual Line (SVG for precision) -->
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Solid line for past -->
+<polyline fill="none" points="0,80 20,75 40,60 50,65" stroke="#1C1917" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Dotted line for future forecast -->
+<polyline fill="none" points="50,65 60,40 80,45 100,20" stroke="#D97706" stroke-dasharray="4,4" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Data Points -->
+<circle cx="50" cy="65" fill="#1C1917" r="3"></circle>
+<circle cx="100" cy="20" fill="#D97706" r="3"></circle>
+</svg>
+<!-- Today Indicator -->
+<div class="absolute left-[50%] top-0 bottom-0 border-l border-amber-600 border-dotted opacity-50"></div>
+<div class="absolute left-[50%] -top-5 -translate-x-1/2 bg-surface text-amber-700 font-mono-label text-[10px] px-1">Today</div>
+</div>
+<!-- "Why?" Panel -->
+<div class="bg-bg-stone border border-border rounded-lg p-md mt-xl">
+<h4 class="font-body-sm text-body-sm font-semibold text-text-strong mb-md">Why this forecast?</h4>
+<div class="flex flex-col gap-sm">
+<!-- Reason Row 1 -->
+<div class="grid grid-cols-[1fr_auto] items-center gap-md">
+<span class="font-body-sm text-body-sm text-text-body truncate">Weekend approaching</span>
+<div class="flex items-center gap-sm">
+<div class="w-24 bg-surface-container rounded-full h-2 overflow-hidden flex justify-end">
+<div class="bg-amber-600 h-full w-[70%]"></div>
+</div>
+<span class="font-mono-label text-mono-label text-amber-700 w-10 text-right">+18%</span>
+</div>
+</div>
+<!-- Reason Row 2 -->
+<div class="grid grid-cols-[1fr_auto] items-center gap-md">
+<span class="font-body-sm text-body-sm text-text-body truncate">Mother's Day in 3 days</span>
+<div class="flex items-center gap-sm">
+<div class="w-24 bg-surface-container rounded-full h-2 overflow-hidden flex justify-end">
+<div class="bg-amber-600 h-full w-[50%]"></div>
+</div>
+<span class="font-mono-label text-mono-label text-amber-700 w-10 text-right">+12%</span>
+</div>
+</div>
+<!-- Reason Row 3 -->
+<div class="grid grid-cols-[1fr_auto] items-center gap-md">
+<span class="font-body-sm text-body-sm text-text-body truncate">Recent steady growth</span>
+<div class="flex items-center gap-sm">
+<div class="w-24 bg-surface-container rounded-full h-2 overflow-hidden flex justify-end">
+<div class="bg-amber-600 h-full w-[20%]"></div>
+</div>
+<span class="font-mono-label text-mono-label text-amber-700 w-10 text-right">+5%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

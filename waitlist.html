@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kira - Waitlist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#fff1eb", "error": "#ba1a1a", "on-primary-fixed-variant": "#763300",
+                        "border": "#E7E5E4", "on-secondary-fixed-variant": "#4b4641", "on-primary-container": "#fff1eb",
+                        "outline-variant": "#ddc1b3", "on-tertiary-fixed": "#001d36", "on-secondary-fixed": "#1f1b17",
+                        "critical": "#9F3A38", "secondary": "#645d58", "primary": "#903f00", "on-primary-fixed": "#331200",
+                        "surface-dim": "#ead6cd", "surface-container-high": "#f8e4db", "secondary-fixed": "#eae1da",
+                        "on-surface-variant": "#564338", "on-secondary": "#ffffff", "on-tertiary-container": "#eef3ff",
+                        "outline": "#897267", "inverse-surface": "#3a2e28", "tertiary-fixed-dim": "#9fcaff",
+                        "surface-container-highest": "#f2dfd6", "warning": "#A16207", "tertiary": "#005998",
+                        "inverse-on-surface": "#ffede5", "surface-tint": "#9b4500", "on-tertiary-fixed-variant": "#00497e",
+                        "text-strong": "#1C1917", "surface-container": "#feeae1", "success": "#4D7C5F", "surface-variant": "#f2dfd6",
+                        "secondary-fixed-dim": "#cec5bf", "background": "#fff8f6", "tertiary-container": "#0072c0",
+                        "on-background": "#231914", "inverse-primary": "#ffb68e", "tertiary-fixed": "#d2e4ff",
+                        "primary-fixed-dim": "#ffb68e", "on-surface": "#231914", "on-error-container": "#93000a",
+                        "surface": "#FFFFFF", "text-muted": "#78716C", "primary-container": "#b45309", "amber-50": "#FFFBEB",
+                        "secondary-container": "#eae1da", "error-container": "#ffdad6", "on-error": "#ffffff",
+                        "on-secondary-container": "#6a635e", "surface-container-lowest": "#ffffff", "amber-700": "#B45309",
+                        "surface-bright": "#fff8f6", "on-primary": "#ffffff", "primary-fixed": "#ffdbca",
+                        "amber-600": "#D97706", "text-body": "#44403C", "bg-stone": "#FAFAF9", "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    "spacing": {"2xl": "48px", "4xl": "96px", "xl": "32px", "xs": "8px", "container-max": "1200px",
+                        "section-v-pad-mobile": "64px", "base": "4px", "lg": "24px", "sm": "12px", "md": "16px",
+                        "section-v-pad-desktop": "96px", "3xl": "64px"},
+                    "fontFamily": {"h3-desktop": ["Geist"], "h2-desktop": ["Geist"], "h3-mobile": ["Geist"],
+                        "h1-desktop": ["Geist"], "mono-label": ["JetBrains Mono"], "body-sm": ["Geist"], "h4": ["Geist"],
+                        "caption": ["Geist"], "h2-mobile": ["Geist"], "body-lg": ["Geist"], "body": ["Geist"], "h1-mobile": ["Geist"]},
+                    "fontSize": {"h3-desktop": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h2-desktop": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "h3-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1-desktop": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "mono-label": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h4": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "caption": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "h2-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1-mobile": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]}
+                }
+            }
+        }
+    </script>
+    <style>
+        .modal-shadow {
+            box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface-dim min-h-screen flex items-center justify-center p-lg md:p-section-v-pad-desktop font-body text-body text-text-body antialiased">
+<!-- Modal Container -->
+<div class="relative w-full max-w-[480px] bg-surface rounded-[16px] modal-shadow p-xl border border-border">
+    <a href="index.html" class="absolute top-md right-md p-xs text-text-muted hover:text-text-strong hover:bg-bg-stone rounded-full transition-colors flex items-center justify-center min-h-[44px] min-w-[44px]">
+        <span class="material-symbols-outlined">close</span>
+    </a>
+    <div class="mb-lg pr-xl">
+        <h3 class="font-h3-mobile text-h3-mobile md:font-h3-desktop md:text-h3-desktop text-text-strong mb-sm">Join the Kira waitlist.</h3>
+        <p class="font-body text-body text-text-muted">Get priority access when we open beta. We'll only email you about Kira — never spam, never sold.</p>
+    </div>
+    <form class="flex flex-col gap-md" onsubmit="handleSubmit(event)">
+        <div class="flex flex-col gap-[6px]">
+            <label class="font-mono-label text-mono-label text-text-strong" for="email">Email address <span class="text-error">*</span></label>
+            <input class="w-full min-h-[44px] px-sm py-[10px] bg-surface border border-border rounded-lg font-body text-body text-text-strong placeholder:text-text-muted/60 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-amber-700 transition-shadow" id="email" name="email" placeholder="you@yourbakery.com" required="" type="email"/>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+            <label class="font-mono-label text-mono-label text-text-strong" for="businessName">Business name <span class="text-error">*</span></label>
+            <input class="w-full min-h-[44px] px-sm py-[10px] bg-surface border border-border rounded-lg font-body text-body text-text-strong placeholder:text-text-muted/60 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-amber-700 transition-shadow" id="businessName" name="businessName" placeholder="Roti Sedap Sdn Bhd" required="" type="text"/>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+            <label class="font-mono-label text-mono-label text-text-strong" for="businessType">Business type <span class="text-error">*</span></label>
+            <div class="relative">
+                <select class="w-full min-h-[44px] pl-sm pr-xl py-[10px] bg-surface border border-border rounded-lg font-body text-body text-text-strong appearance-none focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-amber-700 transition-shadow" id="businessType" name="businessType" required="">
+                    <option class="text-text-muted" disabled="" selected="" value="">Select an option</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="cafe">Cafe</option>
+                    <option value="casual_restaurant">Casual restaurant</option>
+                    <option value="kuih_home_baker">Kuih / home baker</option>
+                    <option value="other_fb">Other F&B</option>
+                    <option value="not_fb">Not F&B</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-sm text-text-muted">
+                    <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-start gap-sm mt-xs">
+            <div class="flex items-center min-h-[44px]">
+                <input class="w-5 h-5 rounded-[4px] border-border text-amber-700 focus:ring-amber-700 focus:ring-offset-0 bg-surface cursor-pointer mt-[-2px]" id="interview" name="interview" type="checkbox"/>
+            </div>
+            <label class="font-body-sm text-body-sm text-text-body cursor-pointer pt-[12px] pb-[10px]" for="interview">
+                I'm happy to be interviewed for 20 minutes to help shape Kira
+            </label>
+        </div>
+        <div class="mt-sm pt-xs border-t border-border/50">
+            <button class="w-full min-h-[44px] py-[16px] px-[24px] bg-amber-700 hover:bg-amber-600 text-on-primary font-h4 text-h4 rounded-[12px] transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2 focus:ring-offset-surface" type="submit">
+                Join the Waitlist
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const businessName = document.getElementById('businessName').value;
+        const businessType = document.getElementById('businessType').value;
+        const interview = document.getElementById('interview').checked;
+
+        // Show loading state
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Joining...';
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    businessName,
+                    businessType,
+                    interview
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert('Error: ' + data.error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // Redirect to success page
+            setTimeout(() => {
+                window.location.href = 'success.html';
+            }, 500);
+        } catch (error) {
+            alert('Error submitting form: ' + error.message);
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+</script>
+</body>
+</html>

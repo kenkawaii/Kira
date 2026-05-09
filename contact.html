@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact Kira</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#903f00", "amber-700": "#B45309", "text-strong": "#1C1917",
+                        "text-muted": "#78716C", "text-body": "#44403C", "surface": "#FFFFFF",
+                        "bg-stone": "#FAFAF9", "border": "#E7E5E4", "success": "#4D7C5F"
+                    },
+                    "borderRadius": {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem"},
+                    "spacing": {"md": "16px", "lg": "24px", "xl": "32px", "sm": "12px", "2xl": "48px"}
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-stone min-h-screen">
+<!-- Navigation -->
+<nav class="bg-surface border-b border-border fixed top-0 w-full z-50">
+    <div class="max-w-[1200px] mx-auto px-lg flex justify-between items-center h-16">
+        <div class="flex items-center gap-md">
+            <a class="font-h4 text-h4 font-bold text-primary tracking-tight" href="index.html">Kira</a>
+        </div>
+        <div class="hidden md:flex items-center gap-lg">
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="how-it-works.html">How It Works</a>
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="features.html">Features</a>
+            <a class="font-body text-body text-text-body hover:text-primary-container transition-colors duration-200" href="faq.html">FAQ</a>
+        </div>
+        <div class="hidden md:flex items-center gap-sm">
+            <a class="font-body text-body text-text-body px-md py-sm rounded-lg hover:text-primary-container transition-colors duration-200" href="#">Sign In</a>
+            <a class="bg-amber-700 text-white font-body text-body px-md py-sm rounded-lg hover:bg-primary transition-colors duration-200" href="waitlist.html">Join Waitlist</a>
+        </div>
+    </div>
+</nav>
+
+<div class="pt-20 pb-2xl">
+    <div class="max-w-[600px] mx-auto px-lg">
+        <h1 class="text-4xl font-bold text-text-strong mb-md">Get in Touch</h1>
+        <p class="text-lg text-text-muted mb-2xl">Have questions? We'd love to hear from you.</p>
+
+        <form onsubmit="handleContact(event)" class="bg-surface border border-border rounded-lg p-2xl">
+            <div class="flex flex-col gap-lg mb-lg">
+                <div>
+                    <label class="block text-sm font-semibold text-text-strong mb-sm">Name</label>
+                    <input type="text" id="name" placeholder="Your name" class="w-full px-md py-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700" required/>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-text-strong mb-sm">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" class="w-full px-md py-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700" required/>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-text-strong mb-sm">Subject</label>
+                    <input type="text" id="subject" placeholder="How can we help?" class="w-full px-md py-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700" required/>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-text-strong mb-sm">Message</label>
+                    <textarea id="message" placeholder="Tell us more..." rows="6" class="w-full px-md py-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700" required></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-amber-700 text-white font-semibold py-sm rounded-lg hover:bg-primary transition-colors">Send Message</button>
+
+            <div id="message-status" class="mt-lg text-center hidden">
+                <p id="status-text" class="text-success font-semibold"></p>
+            </div>
+        </form>
+
+        <div class="mt-2xl p-lg bg-surface border border-border rounded-lg text-center">
+            <p class="text-text-strong font-semibold mb-sm">Or reach us directly:</p>
+            <a href="mailto:hello@kira.my" class="text-amber-700 hover:text-primary font-semibold">hello@kira.my</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w-full bg-text-strong text-bg-stone py-3xl">
+    <div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row justify-between items-start gap-md">
+        <div class="flex flex-col mb-xl md:mb-0 md:w-1/4">
+            <span class="text-h4 font-h4 font-bold text-bg-stone mb-base">Kira</span>
+            <p class="font-caption text-caption opacity-70 mb-base">Predict. Explain. Act.</p>
+            <p class="font-caption text-caption opacity-70">Built in Sabah, Malaysia.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-xl md:w-3/4">
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Product</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="how-it-works.html">How It Works</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="features.html">Features</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="faq.html">FAQ</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="waitlist.html">Waitlist</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Company</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="contact.html">Contact</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">About</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Blog</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <span class="font-h4 text-h4 text-bg-stone mb-sm">Legal</span>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Privacy Policy</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">Terms of Service</a>
+                <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="#">PDPA Notice</a>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-lg mt-xl pt-lg border-t border-text-muted/30 flex flex-col md:flex-row justify-between items-center gap-md">
+        <span class="font-caption text-caption opacity-70">© 2026 Kira. All rights reserved.</span>
+        <a class="font-caption text-caption opacity-70 hover:opacity-100 hover:text-amber-700 hover:underline transition-colors" href="mailto:hello@kira.my">hello@kira.my</a>
+    </div>
+</footer>
+
+<script>
+    async function handleContact(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        const btn = event.target.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, subject, message })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert('Error: ' + data.error);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                return;
+            }
+
+            // Show success message
+            const statusDiv = document.getElementById('message-status');
+            const statusText = document.getElementById('status-text');
+            statusText.textContent = '✓ Message sent successfully!';
+            statusDiv.classList.remove('hidden');
+
+            // Reset form
+            event.target.reset();
+
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        } catch (error) {
+            alert('Error: ' + error.message);
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
+</script>
+</body>
+</html>

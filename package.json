@@ -1,0 +1,26 @@
+{
+  "name": "kira-analytics",
+  "version": "1.0.0",
+  "description": "Predictive analytics SaaS for Malaysian F&B SMEs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["analytics", "saas", "malaysia", "fb"],
+  "author": "Kira Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.18.2",
+    "sqlite3": "5.1.6",
+    "body-parser": "1.20.2",
+    "cors": "2.8.5",
+    "dotenv": "16.0.3",
+    "nodemailer": "6.9.3",
+    "bcryptjs": "2.4.3",
+    "express-session": "1.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
