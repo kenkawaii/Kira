@@ -146,7 +146,7 @@ Confirmation page after waitlist signup
 
 ## 📧 Contact
 
-hello@kira.my
+tekkenooi184@gmail.com
 
 ---
 
