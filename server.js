@@ -72,10 +72,12 @@ db.serialize(() => {
 
 // Email configuration
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.EMAIL_USER || 'your-email@gmail.com',
-    pass: process.env.EMAIL_PASSWORD || 'your-app-password'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
   }
 });
 
@@ -110,7 +112,7 @@ app.post('/api/waitlist', (req, res) => {
 
       // Send confirmation email
       const mailOptions = {
-        from: 'hello@kira.my',
+        from: process.env.EMAIL_USER,
         to: email,
         subject: 'Welcome to Kira Waitlist!',
         html: `
@@ -162,8 +164,8 @@ app.post('/api/contact', (req, res) => {
 
       // Send notification email to admin
       const mailOptions = {
-        from: 'hello@kira.my',
-        to: process.env.EMAIL_USER || 'hello@kira.my',
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
         subject: `New Contact: ${subject}`,
         html: `
           <p><strong>From:</strong> ${name} (${email})</p>
