@@ -13,6 +13,31 @@
         .bg-gradient-warm {
             background: linear-gradient(135deg, #FAFAF9 0%, #FFFBEB 100%);
         }
+        @keyframes drawPast {
+            from { stroke-dashoffset: 120; }
+            to   { stroke-dashoffset: 0; }
+        }
+        @keyframes drawForecast {
+            from { stroke-dashoffset: 160; }
+            to   { stroke-dashoffset: 0; }
+        }
+        .chart-past {
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            animation: drawPast 1s ease-out 0.2s forwards;
+        }
+        .chart-forecast {
+            stroke-dasharray: 7 3;
+            stroke-dashoffset: 160;
+            animation: drawForecast 1s ease-out 0.9s forwards;
+        }
+        .chart-dot {
+            opacity: 0;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .chart-dot-past  { animation-delay: 1.1s; }
+        .chart-dot-forecast { animation-delay: 1.8s; }
+        @keyframes fadeIn { to { opacity: 1; } }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -120,19 +145,40 @@
                             <span class="font-mono-label text-[10px] text-amber-700 font-bold">Fri</span>
                             <span class="font-mono-label text-[10px] text-text-muted">Sun</span>
                         </div>
-                        <div class="absolute inset-0 flex flex-col justify-between">
-                            <div class="w-full border-t border-border border-dashed h-0 opacity-50"></div>
-                            <div class="w-full border-t border-border border-dashed h-0 opacity-50"></div>
+                        <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                            <div class="w-full border-t border-border border-dashed h-0 opacity-60"></div>
+                            <div class="w-full border-t border-border border-dashed h-0 opacity-60"></div>
                             <div class="w-full h-0"></div>
                         </div>
-                        <svg class="absolute inset-0 h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100">
-                            <polyline fill="none" points="0,80 20,75 40,60 50,65" stroke="#1C1917" stroke-linejoin="round" stroke-width="2"></polyline>
-                            <polyline fill="none" points="50,65 60,40 80,45 100,20" stroke="#D97706" stroke-dasharray="4,4" stroke-linejoin="round" stroke-width="2"></polyline>
-                            <circle cx="50" cy="65" fill="#1C1917" r="3"></circle>
-                            <circle cx="100" cy="20" fill="#D97706" r="3"></circle>
+                        <div class="absolute inset-0 flex justify-around pointer-events-none">
+                            <div class="h-full border-l border-border border-dashed opacity-40"></div>
+                            <div class="h-full border-l border-border border-dashed opacity-40"></div>
+                            <div class="h-full border-l border-border border-dashed opacity-40"></div>
+                        </div>
+                        <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                            <defs>
+                                <linearGradient id="pastGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1C1917" stop-opacity="0.12"/>
+                                    <stop offset="100%" stop-color="#1C1917" stop-opacity="0"/>
+                                </linearGradient>
+                                <linearGradient id="forecastGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#B45309" stop-opacity="0.22"/>
+                                    <stop offset="100%" stop-color="#B45309" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Area fills -->
+                            <path d="M 0,80 C 12,78 28,70 40,62 C 44,59 47,64 50,65 L 50,100 L 0,100 Z" fill="url(#pastGrad)"/>
+                            <path d="M 50,65 C 56,52 66,36 80,43 C 88,47 94,22 100,18 L 100,100 L 50,100 Z" fill="url(#forecastGrad)"/>
+                            <!-- Past line -->
+                            <path class="chart-past" d="M 0,80 C 12,78 28,70 40,62 C 44,59 47,64 50,65" fill="none" stroke="#1C1917" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Forecast line -->
+                            <path class="chart-forecast" d="M 50,65 C 56,52 66,36 80,43 C 88,47 94,22 100,18" fill="none" stroke="#B45309" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Data points -->
+                            <circle class="chart-dot chart-dot-past" cx="50" cy="65" r="4.5" fill="white" stroke="#1C1917" stroke-width="2.5"/>
+                            <circle class="chart-dot chart-dot-forecast" cx="100" cy="18" r="4.5" fill="white" stroke="#B45309" stroke-width="2.5"/>
                         </svg>
-                        <div class="absolute left-[50%] top-0 bottom-0 border-l border-amber-600 border-dotted opacity-50"></div>
-                        <div class="absolute left-[50%] -top-5 -translate-x-1/2 bg-surface text-amber-700 font-mono-label text-[10px] px-1">Today</div>
+                        <div class="absolute left-[50%] top-0 bottom-0 border-l-2 border-amber-700 opacity-40" style="border-style:dashed;border-width:0 0 0 2px"></div>
+                        <div class="absolute left-[50%] -top-5 -translate-x-1/2 bg-amber-700 text-white font-mono-label text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap">Today</div>
                     </div>
                     <div class="bg-bg-stone border border-border rounded-lg p-md mt-xl">
                         <h4 class="font-body-sm text-body-sm font-semibold text-text-strong mb-md">Why this forecast?</h4>
