@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 
@@ -71,15 +71,7 @@ db.serialize(() => {
 });
 
 // Email configuration
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Routes
 
@@ -111,8 +103,8 @@ app.post('/api/waitlist', (req, res) => {
       }
 
       // Send confirmation email
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
+      resend.emails.send({
+        from: 'onboarding@resend.dev',
         to: email,
         subject: 'Welcome to Kira Waitlist!',
         html: `
@@ -124,23 +116,12 @@ app.post('/api/waitlist', (req, res) => {
           <p>In the meantime, feel free to reply to this email if you have any questions.</p>
           <p>Best regards,<br>The Kira Team</p>
         `
-      };
+      }).catch(error => console.log('Email error:', error));
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log('Email error:', error);
-          // Still return success even if email fails
-          return res.json({
-            success: true,
-            message: 'Added to waitlist (email notification pending)',
-            id: this.lastID
-          });
-        }
-        res.json({
-          success: true,
-          message: 'Successfully added to waitlist',
-          id: this.lastID
-        });
+      res.json({
+        success: true,
+        message: 'Successfully added to waitlist',
+        id: this.lastID
       });
     }
   );
@@ -163,8 +144,8 @@ app.post('/api/contact', (req, res) => {
       }
 
       // Send notification email to admin
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
+      resend.emails.send({
+        from: 'onboarding@resend.dev',
         to: process.env.EMAIL_USER,
         subject: `New Contact: ${subject}`,
         html: `
@@ -173,11 +154,7 @@ app.post('/api/contact', (req, res) => {
           <p><strong>Message:</strong></p>
           <p>${message.replace(/\n/g, '<br>')}</p>
         `
-      };
-
-      transporter.sendMail(mailOptions, (error) => {
-        if (error) console.log('Email error:', error);
-      });
+      }).catch(error => console.log('Email error:', error));
 
       res.json({ success: true, message: 'Thank you for your message' });
     }
