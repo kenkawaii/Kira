@@ -13,11 +13,9 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static(path.join(__dirname), {
-  setHeaders: (res) => {
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-  }
-}));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+}
 app.use(session({
   secret: 'kira-secret-key-change-in-production',
   resave: false,
@@ -234,18 +232,13 @@ app.delete('/api/admin/waitlist/:id', (req, res) => {
   });
 });
 
-// Server-side pages
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
-});
-
-app.get('/admin/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin-dashboard.html'));
-});
-
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
+// SPA catch-all: serve React app for all non-API routes in production
+app.get('*', (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  } else {
+    res.status(404).json({ error: 'Not found' });
+  }
 });
 
 // Start server

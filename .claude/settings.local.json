@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npm start *)",
-      "Bash(curl -s http://localhost:3000)"
+      "Bash(curl -s http://localhost:3000)",
+      "PowerShell(New-Item *)",
+      "Bash(git rm *)"
     ]
   }
 }

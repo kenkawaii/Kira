@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "dev:client": "npm run dev --prefix client",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:client\"",
+    "build": "npm run build --prefix client"
   },
   "keywords": ["analytics", "saas", "malaysia", "fb"],
   "author": "Kira Team",
@@ -20,6 +23,7 @@
     "express-session": "1.17.3"
   },
   "devDependencies": {
+    "concurrently": "^9.0.1",
     "nodemon": "^3.0.1"
   }
 }

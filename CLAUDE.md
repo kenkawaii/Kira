@@ -5,18 +5,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm start        # Run production server on port 3000
-npm run dev      # Run with nodemon (auto-restart on changes)
-npm install      # Install dependencies
+# Development (run both in separate terminals)
+npm run dev          # Express API on port 3000
+npm run dev:client   # Vite dev server on port 5173
+
+# Or run both together
+npm run dev:all      # concurrently runs both dev servers
+
+# Production
+npm run build        # Build React app to dist/
+npm start            # Serve everything from Express on port 3000
 ```
 
-Access the app at `http://localhost:3000` after starting.
+In development, open `http://localhost:5173`. Vite proxies `/api` to port 3000.  
+In production, Express serves the `dist/` build and handles SPA routing.
 
 ## Architecture
 
-**Single-file backend:** All API logic lives in `server.js` — Express routes, SQLite setup, session auth, and middleware in one file (~260 lines).
+**Backend:** `server.js` — Express REST API, SQLite, session auth (~260 lines). Serves `dist/` as static files in production with a catch-all for SPA routing.
 
-**Static frontend:** All `.html` files are served directly from the root directory via `express.static`. No build step, no bundler — just HTML + Tailwind CDN + vanilla JS.
+**Frontend:** `client/` — Vite + React 18 + React Router 6 + Tailwind CSS 3 (installed via npm, not CDN). Build output goes to `dist/` in the root.
+
+**Frontend structure:**
+- `client/src/App.jsx` — route tree (React Router v6)
+- `client/src/layouts/PublicLayout.jsx` — wraps public pages with Nav + Footer
+- `client/src/components/` — `Nav`, `Footer`, `CTA`
+- `client/src/pages/` — one file per page; admin pages in `pages/admin/`
 
 **Database:** SQLite (`kira.db`) auto-created on first run with 3 tables:
 - `waitlist` — email signups: `email`, `businessName`, `businessType`, `interview` (0/1), `joinedAt`, `status`
@@ -25,17 +39,21 @@ Access the app at `http://localhost:3000` after starting.
 
 **Auth:** Session-based (`express-session`). Admin routes check `req.session.admin`. Passwords hashed with bcryptjs.
 
-## Public Pages
+## Routes
 
-`index.html`, `how-it-works.html`, `features.html`, `comparison.html`, `faq.html`, `why.html`, `waitlist.html`, `contact.html`, `success.html`
-
-## Key Files
-
-- `server.js` — entire backend (routes, DB, auth)
-- `admin-dashboard.html` — admin panel with tabs for waitlist/contacts/stats, auto-refreshes every 30s
-- `waitlist.html` — public signup form (POSTs to `/api/waitlist`)
-- `contact.html` — contact form (POSTs to `/api/contact`)
-- `admin.html` — admin login page
+| Path | Component |
+|------|-----------|
+| `/` | `pages/Home.jsx` |
+| `/how-it-works` | `pages/HowItWorks.jsx` |
+| `/features` | `pages/Features.jsx` |
+| `/comparison` | `pages/Comparison.jsx` |
+| `/faq` | `pages/FAQ.jsx` |
+| `/why` | `pages/Why.jsx` |
+| `/contact` | `pages/Contact.jsx` |
+| `/waitlist` | `pages/Waitlist.jsx` (standalone, no layout) |
+| `/success` | `pages/Success.jsx` (standalone) |
+| `/admin` | `pages/admin/Login.jsx` (standalone) |
+| `/admin/dashboard` | `pages/admin/Dashboard.jsx` (standalone, auto-refreshes every 30s) |
 
 ## API Endpoints
 
